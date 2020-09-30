@@ -16,6 +16,8 @@ public class Main
 		System.out.println("1.Add");
 		System.out.println("Enter your choice");
 		int n=sc.nextInt();
+		int i=0;
+		while(i==0) {
 		if(n==1)
 		{
 			Contact obj=new Contact();
@@ -38,6 +40,7 @@ public class Main
 			sc.nextLine();
 			objmain.addContact(obj);
             System.out.println( "Contact addded" );
+		}
 		}
     }
 }
