@@ -45,4 +45,7 @@ public class AddressBook {
    		 }
    	 }
     }
+	public void addContact(Contact obj) {
+           addressBook.add(obj);		
+	}
 }
