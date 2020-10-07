@@ -4,45 +4,128 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AddressBook {
-	
-	private ArrayList<Contact> addressBook=new ArrayList<Contact>();
-    
-    public void setAddressBook(ArrayList<Contact> obj)
-    {
-   	 addressBook=obj;
-    }
-    public ArrayList<Contact> getAddressBook()
-    {
-   	 return addressBook;
-    }
-    
-    public void editByName(String firstName,String lastName)
-    {
-   	 Contact obj=new Contact();
-   	 ArrayList<Contact> temp=new ArrayList<Contact>();
-   	 Scanner sc=new Scanner(System.in);
-   	 for(Contact obj1:addressBook)
-   	 {
-   		 if((obj1.getFirstName().equalsIgnoreCase(firstName)) && (obj1.getLastName().equalsIgnoreCase(lastName)))
-   		 {
-   			 System.out.println("Enter the city:");
-   			 obj1.setCity(sc.nextLine());
-   			 System.out.println("Enter the State:");
-   			 obj1.setState(sc.nextLine());
-   			 System.out.println("Enter the zip:");
-   			 obj1.setZip(sc.nextLong());
-   			 System.out.println("Enter the ph no:");
-   			 obj1.setPhoneNumber(sc.nextLong());
-   			 sc.nextLine();
-   			 System.out.println("Enter the email id:");
-   			 obj1.setEmailId(sc.nextLine());
-   			 obj=obj1;
-   			 temp.add(obj);
-   			 System.out.println("successfully edited");
-   		 }
-   		 else {
-   			 System.out.println("No contact found");
-   		 }
-   	 }
-    }
+	public static void main(String args[])
+	{
+		ArrayList <Contact> arraylist=new ArrayList<Contact>();
+		Scanner sc=new Scanner(System.in);
+		int a=0;
+		while(a==0)
+		{
+			System.out.println("1.Add a contact\n2.Edit a contact\n3.View Details\n4.Exit");
+			int x=sc.nextInt();
+			if(x==1)
+			{
+				Contact obj=new Contact();
+				obj.addContact();
+				arraylist.add(obj);
+				
+			}
+			if(x==2)
+			{
+				System.out.println("Enter First Name");
+				String fname=sc.next();
+				System.out.println("Enter Last Name");
+				String lname=sc.next();	
+				int i=0;
+				for(i=0;i<arraylist.size();i++)
+				{
+					if(arraylist.get(i).firstName.equalsIgnoreCase(fname) && arraylist.get(i).lastName.equalsIgnoreCase(lname))
+					{
+						arraylist.get(i).editContact();
+						//break;
+					}else {
+						System.out.println("Contact not found");
+				  }
+				 }
+				}
+				/*if(k==0)
+				{
+					System.out.println("******No Contact found******");
+				}
+				else
+				{
+					c.get(i).editContact();
+				}
+			}*/
+			
+			if(x==3)
+			{
+				System.out.println("Enter First Name");
+				String fname=sc.next();
+				System.out.println("Enter Last Name");
+				String lname=sc.next();	
+				int k=0,i=0;
+				for(i=0;i<arraylist.size();i++)
+				{
+					if(arraylist.get(i).firstName.equalsIgnoreCase(fname) && arraylist.get(i).lastName.equalsIgnoreCase(lname))
+					{
+						k=1;
+						break;
+					}
+				}
+				if(k==0)
+				{
+					System.out.println("No Contact found");
+				}
+				else
+				{
+					arraylist.get(i).viewContact();
+				}		
+			}
+		}
+	}
 }
+	class Contact {
+		Scanner sc=new Scanner(System.in);
+		String firstName,lastName,address,city,state,zip,phno,emailId;
+		public void addContact()
+		{
+
+			System.out.println("Enter First Name");
+			this.firstName=sc.next();
+			System.out.println("Enter Last Name");
+			this.lastName=sc.next();
+			System.out.println("Enter Address");
+			this.address=sc.next();
+			System.out.println("Enter city");
+			this.city=sc.next();
+			System.out.println("Enter state");
+			this.state=sc.next();
+			System.out.println("Enter zip code");
+			this.zip=sc.next();
+			System.out.println("Enter phone number");
+			this.phno=sc.next();
+			System.out.println("Enter email");
+			this.emailId=sc.next();
+		}
+		public void editContact()
+		{
+			System.out.println("Enter Address");
+			this.address=sc.next();
+			System.out.println("Enter city");
+			this.city=sc.next();
+			System.out.println("Enter state");
+			this.state=sc.next();
+			System.out.println("Enter zip code");
+			this.zip=sc.next();
+			System.out.println("Enter phone number");
+			this.phno=sc.next();
+			System.out.println("Enter email");
+			this.emailId=sc.next();	
+		}
+		public String toString() {
+			String pattern = (firstName + " " + lastName + " " + city + " " + state + " " + " " + zip + " " + phno + " "
+					+ emailId + " ");
+			return pattern;
+		}
+		public void viewContact()
+		{
+			System.out.println("ADDRESS = "+this.address);
+			System.out.println("CITY = "+this.city);	
+			System.out.println("STATE = "+this.state);	
+			System.out.println("ZIP = "+this.zip);	
+			System.out.println("PHONE NUMBER ="+this.phno);	
+			System.out.println("EMAIL ="+this.emailId);	
+		}
+	}
+		
