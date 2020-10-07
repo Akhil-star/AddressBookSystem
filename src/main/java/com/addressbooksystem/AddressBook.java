@@ -5,68 +5,102 @@ import java.util.Scanner;
 
 public class AddressBook {
 	public static void main(String args[]) {
-		ArrayList<Contact> arraylist = new ArrayList<Contact>();
+		System.out.println("Welcome to Address Book program");
 		Scanner sc = new Scanner(System.in);
-		int a = 0;
-		while (a == 0) {
-			System.out.println("1.Add a contact\n2.Edit a contact\n3.View Details\n4.Delete contact\n5.Exit");
-			int x = sc.nextInt();
-			if (x == 1) {
-				Contact obj = new Contact();
-				obj.addContact();
-				arraylist.add(obj);
+		ArrayList<Address> addressBook = new ArrayList<Address>();
+		int k = 0;
+		Address address;
+		while (k != 3) {
+			System.out.println("1.Create AddressBook\n2.AddressBook Details\n3.Exit");
+			int z = sc.nextInt();
+			if (z == 1) {
+				System.out.println("Enter the address book name ");
+				String bookname = sc.next();
+			    address = new Address();
+				address.addressBookName = bookname;
+				addressBook.add(address);
 			}
 
-			if (x == 2) {
-				System.out.println("Enter First Name");
-				String fname = sc.next();
-				System.out.println("Enter Last Name");
-				String lname = sc.next();
-				int i = 0;
-				for (i = 0; i < arraylist.size(); i++) {
-					if (arraylist.get(i).firstName.equalsIgnoreCase(fname)
-							&& arraylist.get(i).lastName.equalsIgnoreCase(lname)) {
-						arraylist.get(i).editContact();
-					} else {
-						System.out.println("Contact not found");
-					}
-				}
-			}
+			if (z == 2) {
+				System.out.println("Enter the address book name to be accessed");
+				String adbookname = sc.next();
+				for (int j = 0; j < addressBook.size(); j++) {
+					if (addressBook.get(j).addressBookName.equalsIgnoreCase(adbookname)) {
+						int x = 0;
+						while (x != 5) {
+							System.out.println("1.Add contact");
+							System.out.println("2.Edit contact by name");
+							System.out.println("3.View details by name");
+							System.out.println("4.Delete contact");
+							System.out.println("5.Exit");
+							x = sc.nextInt();
+							if (x == 1) {
+								Contact obj = new Contact();
+								obj.addContact();
+								addressBook.get(j).arraylist.add(obj);
+							}
 
-			if (x == 3) {
-				System.out.println("Enter First Name");
-				String fname = sc.next();
-				System.out.println("Enter Last Name");
-				String lname = sc.next();
-				int i = 0;
-				for (i = 0; i < arraylist.size(); i++) {
-					if (arraylist.get(i).firstName.equalsIgnoreCase(fname)
-							&& arraylist.get(i).lastName.equalsIgnoreCase(lname)) {
-						arraylist.get(i).viewContact();
-					} else {
-						System.out.println("Contact Not Found");
-					}
-				}
-			}
+							if (x == 2) {
+								System.out.println("Enter First Name");
+								String fname = sc.next();
+								System.out.println("Enter Last Name");
+								String lname = sc.next();
+								int i = 0;
+								for (i = 0; i < addressBook.get(j).arraylist.size(); i++) {
+									if (addressBook.get(j).arraylist.get(i).firstName.equalsIgnoreCase(fname)
+											&& addressBook.get(j).arraylist.get(i).lastName.equalsIgnoreCase(lname)) {
+										addressBook.get(j).arraylist.get(i).editContact();
+									} else
+										System.out.println("Contact Not Found");
+								}
+							}
 
-			if (x == 4) {
-				System.out.println("Enter First Name");
-				String fname = sc.next();
-				System.out.println("Enter Last Name");
-				String lname = sc.next();
-				for (int i = 0; i < arraylist.size(); i++) {
-					if (arraylist.get(i).firstName.equalsIgnoreCase(fname)
-							&& arraylist.get(i).lastName.equalsIgnoreCase(lname)) {
-						arraylist.remove(i);
-						System.out.println("Contact Deleted Successfully");
-					} else {
-						System.out.println(" Contact Not found");
+							if (x == 3) {
+								System.out.println("Enter First Name");
+								String fname = sc.next();
+								System.out.println("Enter Last Name");
+								String lname = sc.next();
+								int i = 0;
+								for (i = 0; i < addressBook.get(i).arraylist.size(); i++) {
+									if (addressBook.get(j).arraylist.get(i).firstName.equalsIgnoreCase(fname)
+											&& addressBook.get(j).arraylist.get(i).lastName.equalsIgnoreCase(lname)) {
+										addressBook.get(j).arraylist.get(i).viewContact();
+									} else
+										System.out.println("Contact Not Found");
+								}
+
+							}
+
+							if (x == 4) {
+								System.out.println("Enter First Name");
+								String fname = sc.next();
+								System.out.println("Enter Last Name");
+								String lname = sc.next();
+								for (int i = 0; i < addressBook.get(j).arraylist.size(); i++) {
+									if (addressBook.get(j).arraylist.get(i).firstName.equalsIgnoreCase(fname)
+											&& addressBook.get(j).arraylist.get(i).lastName.equalsIgnoreCase(lname)) {
+										addressBook.get(j).arraylist.remove(i);
+										System.out.println("Contact Deleted Successfully");
+									} else
+										System.out.println("Contact Not Found");
+								}
+							}
+
+						}
+					} 
+					else {
+						System.out.println("Address Book does not exists");
 					}
 				}
 			}
 		}
-		sc.close();
 	}
+}
+
+class Address {
+	String addressBookName;
+	ArrayList<Contact> arraylist = new ArrayList<Contact>();
+
 }
 
 class Contact {
