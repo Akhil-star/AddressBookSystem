@@ -97,11 +97,11 @@ class Contact {
 	}
 
 	public void viewContact() {
-		System.out.println("ADDRESS = " + this.address);
-		System.out.println("CITY = " + this.city);
-		System.out.println("STATE = " + this.state);
-		System.out.println("ZIP = " + this.zip);
-		System.out.println("PHONE NUMBER =" + this.phno);
-		System.out.println("EMAIL =" + this.emailId);
+		System.out.println("Address : " + this.address);
+		System.out.println("City : " + this.city);
+		System.out.println("State : " + this.state);
+		System.out.println("Zip : " + this.zip);
+		System.out.println("Phonenumber : " + this.phno);
+		System.out.println("Email : " + this.emailId);
 	}
 }
