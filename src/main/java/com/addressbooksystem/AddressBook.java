@@ -1,36 +1,29 @@
 package com.addressbooksystem;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class AddressBook {
-
-	private ArrayList<Contact> addressBook = new ArrayList<Contact>();
-
-	public void setAddressBook(ArrayList<Contact> obj) {
-		addressBook = obj;
+	
+	public static void main(String args[])
+	{
+		System.out.println("Welcome to Address Book program");
+		
 	}
 
-	public ArrayList<Contact> getAddressBook() {
-		return addressBook;
-	}
-
-	public boolean deleteByName(String firstName, String lastName) {
-		boolean f = false;
-		for (Contact obj2 : addressBook) {
-			if ((obj2.getFirstName().equalsIgnoreCase(firstName)) && (obj2.getLastName().equalsIgnoreCase(lastName))) {
-				f = true;
-				addressBook.remove(obj2);
-				System.out.println("successfully deleted");
-				break;
-			} else {
-				System.out.println("No contact found");
-			}
+ class Contact {
+		String first,last,address,String,city,state,zip,phno,email;
+		ArrayList <Contact> c=new ArrayList<Contact>();
+		public Contact(String first,String last,String address,String city,String state,String zip,String phno,String email)
+		{
+			this.first=first;
+			this.last=last;
+			this.address=address;
+			this.city=city;
+			this.state=state;
+			this.zip=zip;
+			this.phno=phno;
+			this.email=email;
 		}
-		return f;
 	}
 
-	public void addContact(Contact obj) {
-		addressBook.add(obj);
-	}
 }
