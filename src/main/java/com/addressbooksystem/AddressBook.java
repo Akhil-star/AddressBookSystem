@@ -102,6 +102,6 @@ class Contact {
 		System.out.println("State : " + this.state);
 		System.out.println("Zip : " + this.zip);
 		System.out.println("Phonenumber : " + this.phno);
-		System.out.println("Email : " + this.emailId);
+		System.out.println("EmailId : " + this.emailId);
 	}
 }
